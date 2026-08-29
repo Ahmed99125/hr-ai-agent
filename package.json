@@ -1,0 +1,10 @@
+{
+  "name": "hr-ai-agent",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "HR AI Agent built on Lua for a 50,000-employee conglomerate across KSA, UAE, Egypt, and Jordan",
+  "dependencies": {
+    "lua-cli": "^3.1.0",
+    "zod": "^3.24.1"
+  }
+}

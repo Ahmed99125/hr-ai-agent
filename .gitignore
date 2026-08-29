@@ -1,0 +1,25 @@
+# Dependencies & Build
+node_modules/
+dist/
+dist-v2/
+.lua/
+
+# Environment — NEVER commit secrets
+.env
+.env.local
+.env.*.local
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+google-sa.json
