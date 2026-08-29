@@ -1,7 +1,6 @@
 import { LuaSkill } from "lua-cli";
 import { SubmitDailyCheckInTool } from "./tools/SubmitDailyCheckInTool.js";
 import { GetWeeklySummaryTool } from "./tools/GetWeeklySummaryTool.js";
-import { DiagnoseSheetsTool } from "./tools/DiagnoseSheetsTool.js";
 
 export const performanceSkill = new LuaSkill({
   name: "performance",
@@ -38,6 +37,5 @@ The daily check-in deadline is 4:30 PM local time.
   tools: [
     new SubmitDailyCheckInTool(),
     new GetWeeklySummaryTool(),
-    new DiagnoseSheetsTool(),
   ],
 });
