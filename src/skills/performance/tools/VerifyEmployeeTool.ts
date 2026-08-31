@@ -99,6 +99,7 @@ export class VerifyEmployeeTool implements LuaTool {
       employeeId: input.employeeId,
       fullName: employee.fullName,
       jobTitle: employee.jobTitle,
+      agentRole: employee.agentRole,
       department: employee.department,
       location: employee.location,
       officeName,
