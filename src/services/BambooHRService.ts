@@ -101,6 +101,24 @@ class BambooHRService {
     return `https://api.bamboohr.com/api/gateway.php/${this.getSubdomain()}/v1`;
   }
 
+  /** Normalize any BambooHR location value to our internal enum key */
+  private normalizeLocation(raw: string | undefined): BHREmployee["location"] {
+    if (!raw) return "riyadh_hq";
+    const s = raw.toLowerCase().replace(/[\s_-]+/g, "_");
+    if (s.includes("dubai") || s.includes("uae")) return "dubai_plant";
+    if (s.includes("alex") || s.includes("egypt") || s.includes("egp")) return "alexandria_hub";
+    if (s.includes("amman") || s.includes("jordan") || s.includes("jor")) return "amman_center";
+    if (s.includes("riyadh") || s.includes("ksa") || s.includes("saudi")) return "riyadh_hq";
+    // Try direct match as last resort
+    const direct: Record<string, BHREmployee["location"]> = {
+      riyadh_hq: "riyadh_hq",
+      dubai_plant: "dubai_plant",
+      alexandria_hub: "alexandria_hub",
+      amman_center: "amman_center",
+    };
+    return direct[s] ?? "riyadh_hq";
+  }
+
   // ─── Get Employee ─────────────────────────────────────────────────────────
 
   async getEmployee(employeeId: string): Promise<BHREmployee> {
@@ -121,13 +139,13 @@ class BambooHRService {
       jobTitle: data.jobTitle ?? "Staff",
       hireDate: data.hireDate ?? "",
       country: (data.country as BHREmployee["country"]) ?? "KSA",
-      location: (data.location as BHREmployee["location"]) ?? "riyadh_hq",
+      location: this.normalizeLocation(data.location),
       workEmail: data.workEmail ?? "",
       supervisor: data.supervisor ?? "",
       supervisorId: data.supervisorId ?? "",
       nationality: data.nationality ?? "Unknown",
       iqamaExpiryDate: data.customIqamaExpiryDate || undefined,
-      monthlySalary: 0,  // BambooHR doesn't expose salary via directory API without Compensation plan
+      monthlySalary: 0,
       currency: data.currency ?? "SAR",
     };
   }
@@ -261,7 +279,7 @@ class BambooHRService {
       jobTitle: e.jobTitle ?? "Staff",
       hireDate: e.hireDate ?? "",
       country: (e.country as BHREmployee["country"]) ?? "KSA",
-      location: (e.location as BHREmployee["location"]) ?? "riyadh_hq",
+      location: this.normalizeLocation(e.location),
       workEmail: e.workEmail ?? "",
       supervisor: e.supervisor ?? "",
       supervisorId: e.supervisorId ?? "",

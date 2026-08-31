@@ -1,10 +1,8 @@
 import { LuaAgent } from "lua-cli";
 import { onboardingSkill } from "./skills/onboarding/onboarding.skill.js";
-import { leaveManagementSkill } from "./skills/leave-management/leave-management.skill.js";
-import { sopRequestsSkill } from "./skills/sop-requests/sop-requests.skill.js";
 import { performanceSkill } from "./skills/performance/performance.skill.js";
 import { hrSkillsSkill } from "./skills/hr-skills/hr-skills.skill.js";
-import { iqamaExpiryCheckJob } from "./jobs/IqamaExpiryCheckJob.js";
+
 
 export const agent = new LuaAgent({
   name: 'hr-agent',
@@ -122,11 +120,9 @@ When responding in English: 12,000 SAR / 8,500 AED / 25,000 EGP / 1,200 JOD.
 
   skills: [
     onboardingSkill,
-    leaveManagementSkill,
-    sopRequestsSkill,
     performanceSkill,
     hrSkillsSkill,
   ],
 
-  jobs: [iqamaExpiryCheckJob],
+  jobs: [],
 });
