@@ -13,6 +13,7 @@
 import { LuaTool } from "lua-cli";
 import { z } from "zod";
 import { googleSheets, type PerformanceEntry } from "../../../services/GoogleSheetsService.js";
+import { bambooHR } from "../../../services/BambooHRService.js";
 
 const MemberEntrySchema = z.object({
   memberId: z
@@ -72,10 +73,47 @@ export class SubmitDailyCheckInTool implements LuaTool {
       };
     }
 
-    const performanceEntries: PerformanceEntry[] = input.entries.map((entry) => ({
+    // ── Hard guardrail: verify team lead ID against BambooHR ────────────────
+    let verifiedLeadName: string;
+    try {
+      const lead = await bambooHR.getEmployee(input.teamLeadId);
+      verifiedLeadName = lead.fullName;
+    } catch {
+      return {
+        success: false,
+        message:
+          `❌ Team lead ID **${input.teamLeadId}** was not found in BambooHR.\n` +
+          `Submission blocked. Please verify the correct employee ID and try again.`,
+      };
+    }
+
+    // ── Hard guardrail: verify every member ID against BambooHR ────────────
+    const verifiedEntries: Array<{ memberId: string; memberName: string; accomplishments: string; blockers: string; rating: number }> = [];
+    for (const entry of input.entries) {
+      try {
+        const member = await bambooHR.getEmployee(entry.memberId);
+        verifiedEntries.push({
+          memberId: entry.memberId,
+          memberName: member.fullName,  // Always use BambooHR name, ignore LLM-provided name
+          accomplishments: entry.accomplishments,
+          blockers: entry.blockers,
+          rating: entry.rating,
+        });
+      } catch {
+        return {
+          success: false,
+          message:
+            `❌ Team member ID **${entry.memberId}** was not found in BambooHR.\n` +
+            `Submission blocked. All employee IDs must be valid BambooHR records.\n` +
+            `Please provide the correct employee ID for "${entry.memberName}" and try again.`,
+        };
+      }
+    }
+
+    const performanceEntries: PerformanceEntry[] = verifiedEntries.map((entry) => ({
       date,
       teamLeadId: input.teamLeadId,
-      teamLeadName: input.teamLeadName,
+      teamLeadName: verifiedLeadName,
       memberId: entry.memberId,
       memberName: entry.memberName,
       accomplishments: entry.accomplishments,
@@ -100,14 +138,14 @@ export class SubmitDailyCheckInTool implements LuaTool {
     }
 
     // Build per-member summary for confirmation
-    const memberSummary = input.entries.map((e) => ({
+    const memberSummary = verifiedEntries.map((e) => ({
       name: e.memberName,
       rating: `${e.rating}/5 ${"⭐".repeat(e.rating)}`,
       hasBlockers: e.blockers.toLowerCase() !== "none" && e.blockers.trim().length > 0,
     }));
 
     const avgRating =
-      Math.round((input.entries.reduce((sum, e) => sum + e.rating, 0) / input.entries.length) * 10) / 10;
+      Math.round((verifiedEntries.reduce((sum, e) => sum + e.rating, 0) / verifiedEntries.length) * 10) / 10;
 
     const blockerCount = memberSummary.filter((m) => m.hasBlockers).length;
 
@@ -115,7 +153,7 @@ export class SubmitDailyCheckInTool implements LuaTool {
       success: true,
       date,
       teamLeadId: input.teamLeadId,
-      teamLeadName: input.teamLeadName,
+      teamLeadName: verifiedLeadName,
       rowsAdded: result.rowsAdded,
       teamAvgRating: avgRating,
       membersWithBlockers: blockerCount,

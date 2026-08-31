@@ -4,13 +4,13 @@ agent:
 skills:
   - name: onboarding
     skillId: 31c6cf3f-64d9-4f48-88ab-448b7b0b1145
-    version: 1.0.22
+    version: 1.0.23
   - name: performance
     skillId: 6f18c2d8-b5d4-4388-b4fa-3c5f72438f85
-    version: 1.0.22
+    version: 1.0.23
   - name: hr-skills
     skillId: 860b2d78-2e5d-467f-b75e-ec667127c656
-    version: 1.0.22
+    version: 1.0.23
   - name: leave-management
     skillId: 23c2d5d0-1422-49a8-ad0b-801e84015998
     version: 1.0.19
@@ -22,6 +22,6 @@ jobs:
     name: iqama-expiry-daily-scan
     version: 1.0.19
 backup:
-  activeVersion: 22
-  lastHash: b80ec948203fea11a5bc1f4f8a768eed5255fe177b2c02bc33a1169887f772bb
-  lastPushedAt: '2026-08-31T10:51:29.117Z'
+  activeVersion: 23
+  lastHash: dca84329b73524e6f921a458a3ff6665dcec9a772e67817d5a69cdb1645b285d
+  lastPushedAt: '2026-08-31T11:52:27.794Z'
