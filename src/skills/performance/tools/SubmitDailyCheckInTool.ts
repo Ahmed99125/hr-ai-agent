@@ -39,7 +39,9 @@ const MemberEntrySchema = z.object({
 export class SubmitDailyCheckInTool implements LuaTool {
   name = "submit_daily_checkin";
   description =
-    "Submit daily performance check-in data for a team. Appends each team member's accomplishments, blockers, and productivity rating (1–5) to the live Google Sheets performance dashboard. Called by team leads at the end of each workday.";
+    "Submit daily performance check-in data for a team. Appends each team member's accomplishments, blockers, and productivity rating (1–5) to the live Google Sheets performance dashboard. " +
+    "IMPORTANT: The team lead and each team member MUST have been verified via verify_employee BEFORE calling this tool. " +
+    "Use the verified fullName from BambooHR for teamLeadName and memberName — never rely on user-typed names.";
 
   inputSchema = z.object({
     teamLeadId: z
