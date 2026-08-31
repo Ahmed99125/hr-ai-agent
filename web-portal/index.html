@@ -256,6 +256,14 @@
     <!-- LuaPop Web Widget -->
     <script src="https://lua-ai-global.github.io/lua-pop/lua-pop.umd.js"></script>
     <script>
+      // Clear persistent session state on page refresh to force a new session
+      Object.keys(localStorage).forEach(key => {
+          if (key.toLowerCase().includes('lua')) localStorage.removeItem(key);
+      });
+      Object.keys(sessionStorage).forEach(key => {
+          if (key.toLowerCase().includes('lua')) sessionStorage.removeItem(key);
+      });
+
       window.LuaPop.init({
         agentId: "baseAgent_agent_1787893066684_v46k6qy6i",
         position: "bottom-right",
