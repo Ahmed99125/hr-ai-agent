@@ -39,7 +39,9 @@ export class VerifyEmployeeTool implements LuaTool {
   async execute(input: z.infer<typeof this.inputSchema>) {
     let employee;
     try {
-      employee = await bambooHR.getEmployee(input.employeeId);
+      const allEmployees = await bambooHR.getAllEmployees();
+      employee = allEmployees.find(e => String(e.id) === String(input.employeeId));
+      if (!employee) throw new Error("Not found");
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
       // Handle the common "not found" case clearly

@@ -76,7 +76,9 @@ export class SubmitDailyCheckInTool implements LuaTool {
     // ── Hard guardrail: verify team lead ID against BambooHR ────────────────
     let verifiedLeadName: string;
     try {
-      const lead = await bambooHR.getEmployee(input.teamLeadId);
+      const allEmployees = await bambooHR.getAllEmployees();
+      const lead = allEmployees.find(e => String(e.id) === String(input.teamLeadId));
+      if (!lead) throw new Error("Not found");
       if (!lead.jobTitle.toLowerCase().includes("team lead")) {
         return {
           success: false,
@@ -97,9 +99,11 @@ export class SubmitDailyCheckInTool implements LuaTool {
 
     // ── Hard guardrail: verify every member ID against BambooHR ────────────
     const verifiedEntries: Array<{ memberId: string; memberName: string; accomplishments: string; blockers: string; rating: number }> = [];
+    const allEmployeesForMembers = await bambooHR.getAllEmployees(); // fetch once
     for (const entry of input.entries) {
       try {
-        const member = await bambooHR.getEmployee(entry.memberId);
+        const member = allEmployeesForMembers.find(e => String(e.id) === String(entry.memberId));
+        if (!member) throw new Error("Not found");
         verifiedEntries.push({
           memberId: entry.memberId,
           memberName: member.fullName,  // Always use BambooHR name, ignore LLM-provided name
