@@ -19,6 +19,7 @@ export interface BHREmployee {
   fullName: string;
   department: string;
   jobTitle: string;
+  agentRole?: string;
   hireDate: string;
   country: "KSA" | "UAE" | "EGY" | "JOR";
   location: "riyadh_hq" | "dubai_plant" | "alexandria_hub" | "amman_center";
@@ -124,7 +125,7 @@ class BambooHRService {
   async getEmployee(employeeId: string): Promise<BHREmployee> {
     const resp = await fetch(
       `${this.baseUrl}/employees/${employeeId}` +
-      `?fields=firstName,lastName,department,jobTitle,hireDate,workEmail,` +
+      `?fields=firstName,lastName,department,jobTitle,customCurrentJobDescription,hireDate,workEmail,` +
       `supervisorId,supervisor,country,location,nationality,customIqamaExpiryDate,currency`,
       { headers: this.getHeaders() }
     );
@@ -137,6 +138,7 @@ class BambooHRService {
       fullName: `${data.firstName ?? ""} ${data.lastName ?? ""}`.trim(),
       department: data.department ?? "General",
       jobTitle: data.jobTitle ?? "Staff",
+      agentRole: data.customCurrentJobDescription,
       hireDate: data.hireDate ?? "",
       country: (data.country as BHREmployee["country"]) ?? "KSA",
       location: this.normalizeLocation(data.location),
@@ -277,6 +279,7 @@ class BambooHRService {
       fullName: `${e.firstName ?? ""} ${e.lastName ?? ""}`.trim(),
       department: e.department ?? "General",
       jobTitle: e.jobTitle ?? "Staff",
+      agentRole: e.customCurrentJobDescription,
       hireDate: e.hireDate ?? "",
       country: (e.country as BHREmployee["country"]) ?? "KSA",
       location: this.normalizeLocation(e.location),

@@ -12,8 +12,8 @@
 
 import { LuaTool } from "lua-cli";
 import { z } from "zod";
-import { googleSheets, type PerformanceEntry } from "../../../services/GoogleSheetsService.js";
 import { bambooHR } from "../../../services/BambooHRService.js";
+import { googleSheets, type PerformanceEntry } from "../../../services/GoogleSheetsService.js";
 
 const MemberEntrySchema = z.object({
   memberId: z
@@ -76,10 +76,11 @@ export class SubmitDailyCheckInTool implements LuaTool {
     // ── Hard guardrail: verify team lead ID against BambooHR ────────────────
     let verifiedLeadName: string;
     try {
-      const allEmployees = await bambooHR.getAllEmployees();
-      const lead = allEmployees.find(e => String(e.id) === String(input.teamLeadId));
+      const lead = await bambooHR.getEmployee(input.teamLeadId);
       if (!lead) throw new Error("Not found");
-      if (!lead.jobTitle.toLowerCase().includes("team lead")) {
+      const isTeamLead = lead.agentRole === "Team Lead";
+
+      if (!isTeamLead) {
         return {
           success: false,
           message:

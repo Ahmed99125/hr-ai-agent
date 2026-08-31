@@ -39,8 +39,7 @@ export class VerifyEmployeeTool implements LuaTool {
   async execute(input: z.infer<typeof this.inputSchema>) {
     let employee;
     try {
-      const allEmployees = await bambooHR.getAllEmployees();
-      employee = allEmployees.find(e => String(e.id) === String(input.employeeId));
+      employee = await bambooHR.getEmployee(input.employeeId);
       if (!employee) throw new Error("Not found");
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
@@ -61,7 +60,9 @@ export class VerifyEmployeeTool implements LuaTool {
       };
     }
 
-    if (input.role === "team_lead" && !employee.jobTitle.toLowerCase().includes("team lead")) {
+    const isTeamLead = employee.agentRole === "Team Lead";
+
+    if (input.role === "team_lead" && !isTeamLead) {
       return {
         found: false,
         employeeId: input.employeeId,
