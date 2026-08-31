@@ -77,6 +77,14 @@ export class SubmitDailyCheckInTool implements LuaTool {
     let verifiedLeadName: string;
     try {
       const lead = await bambooHR.getEmployee(input.teamLeadId);
+      if (!lead.jobTitle.toLowerCase().includes("team lead")) {
+        return {
+          success: false,
+          message:
+            `❌ Submission blocked. Employee **${lead.fullName}** (${lead.jobTitle}) is not authorized.\n` +
+            `Only Team Leads are permitted to submit daily team check-ins.`,
+        };
+      }
       verifiedLeadName = lead.fullName;
     } catch {
       return {

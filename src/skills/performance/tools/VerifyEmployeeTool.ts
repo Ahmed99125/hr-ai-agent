@@ -59,6 +59,14 @@ export class VerifyEmployeeTool implements LuaTool {
       };
     }
 
+    if (input.role === "team_lead" && !employee.jobTitle.toLowerCase().includes("team lead")) {
+      return {
+        found: false,
+        employeeId: input.employeeId,
+        message: `❌ Authorization Denied: Employee **${employee.fullName}** (${employee.jobTitle}) is not authorized. Daily check-ins can only be submitted by Team Leads.`,
+      };
+    }
+
     // Map location to human-readable office name
     const officeMap: Record<string, string> = {
       riyadh_hq: "Riyadh HQ 🇸🇦",
