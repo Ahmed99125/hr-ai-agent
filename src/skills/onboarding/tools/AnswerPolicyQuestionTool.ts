@@ -28,11 +28,17 @@ export class AnswerPolicyQuestionTool implements LuaTool {
   });
 
   async execute(input: z.infer<typeof this.inputSchema>) {
-    // Build the search query — prepend country context if specified
-    const searchQuery =
-      input.country && input.country !== "ALL"
-        ? `${input.country} ${input.question}`
-        : input.question;
+    // Map country acronyms to bilingual names for better semantic search results in both languages
+    const countryMap: Record<string, string> = {
+      KSA: "Saudi Arabia السعودية",
+      UAE: "UAE الإمارات",
+      EGY: "Egypt مصر",
+      JOR: "Jordan الأردن",
+    };
+
+    // Build the search query — prepend full country name if specified
+    const countryName = input.country && input.country !== "ALL" ? countryMap[input.country] : null;
+    const searchQuery = countryName ? `${countryName} ${input.question}` : input.question;
 
     // Search the Lua RAG knowledge base (resources uploaded via 'lua resources')
     const results = await Data.search("hr_knowledge_base", searchQuery, 4);
@@ -41,11 +47,11 @@ export class AnswerPolicyQuestionTool implements LuaTool {
       return {
         found: false,
         question: input.question,
-        answer: null,
-        sources: [],
-        message:
-          "I couldn't find a specific policy or legal reference for this question in the knowledge base. This may be a policy gap — would you like me to log it for the HR team to review?\n\n" +
-          "لم أجد إجابة محددة في قاعدة معرفتنا. هل تريد تسجيل هذا السؤال لمراجعة فريق الموارد البشرية؟",
+        country: input.country,
+        instructionsForAgent:
+          "No policies or legal references were found for this question in the knowledge base. " +
+          "Apologize to the user IN THEIR EXACT LANGUAGE and ask if they would like you to log this as a policy gap for the HR team to review. " +
+          "Do not use Arabic if the user spoke English.",
       };
     }
 
