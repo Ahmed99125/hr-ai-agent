@@ -1,11 +1,11 @@
-## ?????? ?????? � Arabic Search Index (Jordan)
-- **?????? ????? ??????** / gratuity / ????? ????? ?????? ? Gratuity section
-- **????? ?????** / annual leave / ???? ????? ? Annual leave section
-- **????? ?????** / sick leave / ???? ? Sick leave section
-- **????? ?????** / maternity / ??? / ??? ? Maternity section
-- **???? ???????** / probation / ?????? ? Probation section
-- **????? ??????** / ??? / ??????? ? Termination section
-- **????? ?????** / ???? / overtime ? Working hours section
+## الفهرس العربي — Arabic Search Index (Jordan)
+- **مكافأة نهاية الخدمة** / gratuity / مكافأة نهاية الخدمة → Gratuity section
+- **إجازة سنوية** / annual leave / إجازة سنوية → Annual leave section
+- **إجازة مرضية** / sick leave / مرضي → Sick leave section
+- **إجازة أمومة** / maternity / وضع / أمومة → Maternity section
+- **فترة التجربة** / probation / اختبار → Probation section
+- **إنهاء الخدمة** / فصل / استقالة → Termination section
+- **العمل الإضافي** / إضافي / overtime → Working hours section
 
 ---
 
@@ -68,7 +68,7 @@ Authority: Jordan Labour Law No. 8 of 1996 (Amended 2008, 2010, 2019)
 - Eid Al-Adha: 3 days
 - Islamic New Year
 - Prophet's Birthday
-- Easter (variable — for Christian employees)
+- Easter (variable â€” for Christian employees)
 - Labor Day (May 1)
 - Jordan Independence Day (May 25)
 - Army Day (June 10)
@@ -81,7 +81,7 @@ Authority: Jordan Labour Law No. 8 of 1996 (Amended 2008, 2010, 2019)
 - **Contracts under 1 year**: Notice = working days in 1 month's notice period
 - Termination without valid cause entitles employee to compensation equal to 1 month's salary per year of service (in addition to notice pay).
 
-**Reference**: Articles 21–32, Labour Law No. 8 of 1996
+**Reference**: Articles 21â€“32, Labour Law No. 8 of 1996
 
 ---
 
@@ -94,7 +94,7 @@ Authority: Jordan Labour Law No. 8 of 1996 (Amended 2008, 2010, 2019)
 
 ---
 
-## 9. Social Security (الضمان الاجتماعي)
+## 9. Social Security (Ø§Ù„Ø¶Ù…Ø§Ù† Ø§Ù„Ø§Ø¬ØªÙ…Ø§Ø¹ÙŠ)
 - **Employee contribution**: 7.5% of basic salary
 - **Employer contribution**: 14.25% of basic salary
 - Covers: old age pension, disability, death, workplace injuries.

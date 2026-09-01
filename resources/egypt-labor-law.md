@@ -1,11 +1,11 @@
-## ?????? ?????? � Arabic Search Index (Egypt)
-- **?????? ????? ??????** / gratuity / ??? ????? ?????? ? Gratuity section
-- **????? ?????** / ???? / annual leave ? Annual leave section
-- **????? ?????** / sick leave / ???? ? Sick leave section
-- **????? ?????** / maternity / ??? ? Maternity section
-- **???? ???????** / probation / ?????? ? Probation section
-- **????? ??????** / ??? / ??????? / ?????? ? Termination section
-- **????? ?????** / ???? / overtime ? Working hours section
+## الفهرس العربي — Arabic Search Index (Egypt)
+- **مكافأة نهاية الخدمة** / gratuity / مكافأة نهاية الخدمة → Gratuity section
+- **إجازة سنوية** / إجازة / annual leave → Annual leave section
+- **إجازة مرضية** / sick leave / مرضي → Sick leave section
+- **إجازة وضع** / maternity / وضع → Maternity section
+- **فترة التجربة** / probation / اختبار → Probation section
+- **إنهاء الخدمة** / فصل / استقالة / استغناء → Termination section
+- **العمل الإضافي** / إضافي / overtime → Working hours section
 
 ---
 
@@ -64,7 +64,7 @@ Supplemented by: Social Insurance Law No. 148 of 2019
 ---
 
 ## 6. Public Holidays (Paid)
-- Egyptian National Day (January 25) — Revolution Day
+- Egyptian National Day (January 25) â€” Revolution Day
 - Sinai Liberation Day (April 25)
 - Labor Day (May 1)
 - June 30 Revolution Day
@@ -74,7 +74,7 @@ Supplemented by: Social Insurance Law No. 148 of 2019
 - Eid Al-Adha: 3 days
 - Islamic New Year
 - Prophet's Birthday
-- Christmas (January 7) — for Christian employees
+- Christmas (January 7) â€” for Christian employees
 
 ---
 
@@ -83,12 +83,12 @@ Supplemented by: Social Insurance Law No. 148 of 2019
 - Termination without valid reason entitles employee to compensation (Article 122)
 - Employee terminated without cause receives: 2 months' salary per year of service
 
-**Reference**: Articles 110–124, Labour Law No. 12 of 2003
+**Reference**: Articles 110â€“124, Labour Law No. 12 of 2003
 
 ---
 
 ## 8. End-of-Service Gratuity
-- **First 5 years of service**: ½ month salary per year
+- **First 5 years of service**: Â½ month salary per year
 - **Beyond 5 years**: 1 month salary per year
 - Minimum service for entitlement: 1 year
 - Gratuity is separate from social insurance pension.
@@ -97,7 +97,7 @@ Supplemented by: Social Insurance Law No. 148 of 2019
 
 ---
 
-## 9. Social Insurance (التأمينات الاجتماعية)
+## 9. Social Insurance (Ø§Ù„ØªØ£Ù…ÙŠÙ†Ø§Øª Ø§Ù„Ø§Ø¬ØªÙ…Ø§Ø¹ÙŠØ©)
 - **Employee contribution**: 11% of salary (capped salary ceiling applies)
 - **Employer contribution**: 19% of salary
 - Covers: retirement pension, disability, workplace injury, death, and unemployment benefits.

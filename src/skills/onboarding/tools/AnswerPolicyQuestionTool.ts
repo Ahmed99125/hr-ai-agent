@@ -51,11 +51,11 @@ export class AnswerPolicyQuestionTool implements LuaTool {
 
     // Combine the top results into a coherent answer context
     const topResults = results.slice(0, 3);
-    const sourceRefs = topResults.map((r: { source?: string; score?: number; content?: string }, i: number) => ({
+    const contextRefs = topResults.map((r: { source?: string; score?: number; content?: string }, i: number) => ({
       rank: i + 1,
       source: r.source ?? "HR Knowledge Base",
       relevanceScore: r.score ? `${Math.round(r.score * 100)}%` : "High",
-      excerpt: r.content ? r.content.slice(0, 200).trim() + "..." : "",
+      content: r.content ?? "",
     }));
 
     return {
@@ -63,11 +63,11 @@ export class AnswerPolicyQuestionTool implements LuaTool {
       question: input.question,
       country: input.country,
       sourcesSearched: results.length,
-      sources: sourceRefs,
-      note: "Answer is generated based on the following knowledge base excerpts. For binding legal advice, please consult the HR Legal team.",
-      message:
-        `Found ${results.length} relevant reference(s) in the knowledge base for your question.\n\n` +
-        `Please review the sources above. The answer has been generated based on your organization's official HR documents and local labor law references for ${input.country === "ALL" ? "all jurisdictions" : input.country}.`,
+      context: contextRefs,
+      instructionsForAgent:
+        "Using the context provided above, synthesize a clear and accurate answer to the user's question in their language. " +
+        "Do not just echo the context back or ask the user to review it. Actually answer their question based strictly on the provided text. " +
+        "Include a small disclaimer that for binding legal advice they should consult the HR Legal team.",
     };
   }
 }

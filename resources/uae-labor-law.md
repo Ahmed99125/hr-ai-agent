@@ -1,10 +1,10 @@
-## ?????? ?????? � Arabic Search Index (UAE)
-- **?????? ????? ??????** / gratuity / end of service ? UAE gratuity section
-- **????? ?????** / annual leave / 30 ??? ? Annual leave section
-- **???? ???????** / probation / 6 months ? Probation section
-- **????? ??????** / ??? / ??????? / termination ? Termination section
-- **?????** / ?????? ????? / residency visa ? Residency section
-- **?????? ??????????** / Emirates ID ? ID card section
+## الفهرس العربي — Arabic Search Index (UAE)
+- **مكافأة نهاية الخدمة** / gratuity / end of service → UAE gratuity section
+- **إجازة سنوية** / annual leave / 30 يوم → Annual leave section
+- **فترة التجربة** / probation / 6 months → Probation section
+- **إنهاء الخدمة** / فصل / استقالة / termination → Termination section
+- **إقامة** / تأشيرة إقامة / residency visa → Residency section
+- **الهوية الإماراتية** / Emirates ID → ID card section
 
 ---
 
@@ -17,7 +17,7 @@ Replaces: Federal Law No. 8 of 1980
 ## 1. Probation Period
 - **Maximum**: 6 months (180 days)
 - During probation: 14 days written notice required to terminate.
-- Employee who leaves within probation after less than 6 months and joins another UAE employer — the new employer may be liable for recruitment costs if the employee absconds.
+- Employee who leaves within probation after less than 6 months and joins another UAE employer â€” the new employer may be liable for recruitment costs if the employee absconds.
 
 ---
 
@@ -63,7 +63,7 @@ Replaces: Federal Law No. 8 of 1980
 ## 6. Working Hours
 - **Standard**: 8 hours/day, 48 hours/week
 - **Ramadan**: 6 hours/day for Muslim employees
-- **Overtime**: First 2 hours — 125% of normal wage; overtime between 9 PM and 4 AM — 150%
+- **Overtime**: First 2 hours â€” 125% of normal wage; overtime between 9 PM and 4 AM â€” 150%
 - Friday (or Saturday for some sectors) is the weekly rest day.
 
 ---
@@ -75,16 +75,16 @@ Replaces: Federal Law No. 8 of 1980
 - Arafat Day
 - Islamic New Year
 - Prophet's Birthday
-- UAE National Day (December 2–3): 2 days
+- UAE National Day (December 2â€“3): 2 days
 
 ---
 
 ## 8. Termination & Notice Period
-- **Indefinite contracts**: 30–90 days written notice (depending on contract terms, minimum 30 days)
+- **Indefinite contracts**: 30â€“90 days written notice (depending on contract terms, minimum 30 days)
 - Either party may terminate with notice.
 - Arbitrary dismissal entitles employee to compensation of up to 3 months' salary.
 
-**Reference**: Article 42–43, Federal Decree-Law No. 33 of 2021
+**Reference**: Article 42â€“43, Federal Decree-Law No. 33 of 2021
 
 ---
 
@@ -103,7 +103,7 @@ Replaces: Federal Law No. 8 of 1980
 
 ---
 
-## 10. Emiratisation (توطين)
+## 10. Emiratisation (ØªÙˆØ·ÙŠÙ†)
 - Private sector companies with 50+ employees: 2% Emiratisation rate target (increasing annually)
 - Companies failing to meet targets face quarterly fines (AED 6,000 per month per unfilled Emirati position)
 - NAFIS program: government provides salary support for Emirati hires in private sector.
